@@ -1,8 +1,10 @@
 package views
 {
-	import robotlegs.bender.extensions.mediatorMap.impl.Mediator;
-	import views.api.*;
 	import control.TestSignal;
+	
+	import robotlegs.bender.bundles.classic.impl.Mediator;
+	
+	import views.api.*;
 
 	public class AppViewMediator extends Mediator
 	{

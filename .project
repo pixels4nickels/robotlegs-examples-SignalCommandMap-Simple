@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>SignalCommandMap-example</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.project.flexbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.adobe.flexbuilder.project.flexnature</nature>
+		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[source path] SignalCommandMap-src</name>
+			<type>2</type>
+			<location>/Users/krogers/Git/SignalCommandMap/src</location>
+		</link>
+		<link>
+			<name>[source path] robotlegs-framework-src</name>
+			<type>2</type>
+			<location>/Users/krogers/Git/robotlegs-framework/src</location>
+		</link>
+	</linkedResources>
+</projectDescription>

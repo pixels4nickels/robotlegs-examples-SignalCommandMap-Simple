@@ -1,21 +1,76 @@
 package cfg 
 {
+	import control.TestCommand;
+	import control.TestSignal;
+	
 	import org.osflash.signals.Signal;
+	import org.swiftsuspenders.Injector;
 	
 	import robotlegs.bender.bundles.classic.ClassicRobotlegsBundle;
 	import robotlegs.bender.bundles.shared.configs.ContextViewListenerConfig;
-	import robotlegs.bender.core.api.IContextBuilder;
-	import robotlegs.bender.core.api.IContextBuilderBundle;
 	import robotlegs.bender.extensions.commandMap.CommandMapExtension;
+	import robotlegs.bender.extensions.contextView.ContextViewExtension;
+	import robotlegs.bender.extensions.eventCommandMap.EventCommandMapExtension;
+	import robotlegs.bender.extensions.eventDispatcher.EventDispatcherExtension;
+	import robotlegs.bender.extensions.localEventMap.LocalEventMapExtension;
+	import robotlegs.bender.extensions.logging.TraceLoggingExtension;
 	import robotlegs.bender.extensions.mediatorMap.MediatorMapExtension;
-	import robotlegs.bender.extensions.mediatorMap.configs.RL2MediatorsConfig;
+	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+	import robotlegs.bender.extensions.modularity.ModularityExtension;
 	import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
-	import robotlegs.bender.extensions.viewManager.AutoStageListenerExtension;
+	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
+	import robotlegs.bender.extensions.stageSync.StageSyncExtension;
+	import robotlegs.bender.extensions.viewManager.ManualStageObserverExtension;
+	import robotlegs.bender.extensions.viewManager.StageObserverExtension;
 	import robotlegs.bender.extensions.viewManager.ViewManagerExtension;
-
-	public class AppBundle implements IContextBuilderBundle
+	import robotlegs.bender.framework.context.api.IContext;
+	import robotlegs.bender.framework.context.api.IContextConfig;
+	import robotlegs.bender.framework.object.managed.impl.ManagedObject;
+	
+	import views.AppViewMediator;
+	import views.api.iAppView;
+		
+	public class AppBundle implements IContextConfig
 	{
-		public function install(builder:IContextBuilder):void
+		[Inject]
+		public var mediatorMap:IMediatorMap;
+		
+		[Inject]
+		public var commandMap:ISignalCommandMap;
+		
+		[Inject]
+		public var injector:Injector;
+
+		public function configureContext(context:IContext):void
+		{
+			context.require(
+				TraceLoggingExtension,
+				ContextViewExtension,
+				EventDispatcherExtension,
+				ModularityExtension,
+				StageSyncExtension,
+				CommandMapExtension,
+				EventCommandMapExtension,
+				LocalEventMapExtension,
+				ViewManagerExtension,
+				StageObserverExtension,
+				ManualStageObserverExtension,
+				MediatorMapExtension,
+				ContextViewListenerConfig,
+				SignalCommandMapExtension, 
+				AppConfig
+			);
+			
+			//context.addStateHandler(ManagedObject.PRE_INITIALIZE, handleContextPreInitialize);
+			//context.addStateHandler(ManagedObject.POST_INITIALIZE, handleContextPostInitialize);
+		}
+		
+		private function handleContextPostInitialize():void
+		{
+			trace("Doing some things now that the context is initialized...");
+
+		}
+		/*public function install(builder:IContextBuilder):void
 		{
 
 			builder.withExtension(CommandMapExtension);
@@ -33,6 +88,6 @@ package cfg
 				.withExtension(SignalCommandMapExtension)
 				.withConfig(AppConfig);
 				
-		}
+		}*/
 	}
 }

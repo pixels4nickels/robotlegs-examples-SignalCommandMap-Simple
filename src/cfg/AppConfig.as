@@ -1,22 +1,22 @@
 package cfg 
 {
-	import org.swiftsuspenders.Injector;
-	
-	import robotlegs.bender.core.api.IContext;
-	import robotlegs.bender.core.api.IContextConfig;
-	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
-	import robotlegs.bender.extensions.viewManager.api.IViewManager;
-	import robotlegs.bender.extensions.viewMap.impl.ViewMap;
-	
-	import views.AppViewMediator;
-	import views.api.iAppView;
 	import control.TestCommand;
 	import control.TestSignal;
 	
-	public class AppConfig implements IContextConfig
+	import org.hamcrest.Matcher;
+	import org.swiftsuspenders.Injector;
+	
+	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
+	import robotlegs.bender.extensions.viewManager.api.IViewManager;
+	
+	import views.AppView;
+	import views.AppViewMediator;
+	import views.api.iAppView;
+	
+	public class AppConfig
 	{
-		
+
 		[Inject]
 		public var mediatorMap:IMediatorMap;
 
@@ -26,10 +26,12 @@ package cfg
 		[Inject]
 		public var injector:Injector;
 
-		public function configure(context:IContext):void
+		[PostConstruct]
+		public function init():void
 		{
-			mediatorMap.map(iAppView).toMediator(AppViewMediator);
+			mediatorMap.mapView(AppView).toMediator(AppViewMediator).asType(iAppView);
 			commandMap.map(TestSignal).toCommand(TestCommand);
 		}
+		
 	}
 }
