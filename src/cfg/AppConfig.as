@@ -3,12 +3,9 @@ package cfg
 	import control.TestCommand;
 	import control.TestSignal;
 	
-	import org.hamcrest.Matcher;
 	import org.swiftsuspenders.Injector;
-	
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
-	import robotlegs.bender.extensions.viewManager.api.IViewManager;
 	
 	import views.AppView;
 	import views.AppViewMediator;
