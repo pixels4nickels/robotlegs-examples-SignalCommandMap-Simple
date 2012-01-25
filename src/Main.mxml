@@ -5,11 +5,13 @@
 			   xmlns:local="*" 
 			   xmlns:mxml="robotlegs.bender.mxml.*" 
 			   xmlns:views="views.*" 
-			   minWidth="955" minHeight="600" xmlns:cfg="cfg.*" 
+			   minWidth="955" minHeight="600" xmlns:cfg="cfg.*" xmlns:classic="robotlegs.bender.bundles.classic.*" 
 			   >
 	<fx:Declarations>
 		<mxml:ContextBuilderTag>
+			<classic:ClassicRobotlegsBundle/>
 			<cfg:AppBundle/>
+			<cfg:AppConfig/>
 		</mxml:ContextBuilderTag>
 	</fx:Declarations>
 	<views:AppView width="100%"/>
