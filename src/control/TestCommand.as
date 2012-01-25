@@ -1,6 +1,6 @@
 package control
 {
-	import robotlegs.bender.extensions.signalCommandMap.impl.SignalCommand;
+	import robotlegs.extensions.signalCommandMap.impl.SignalCommand;
 
 	public class TestCommand extends SignalCommand
 	{

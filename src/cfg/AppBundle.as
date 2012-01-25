@@ -2,8 +2,8 @@ package cfg
 {
 	import org.swiftsuspenders.Injector;
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-	import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
-	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
+	import robotlegs.extensions.signalCommandMap.SignalCommandMapExtension;
+	import robotlegs.extensions.signalCommandMap.api.ISignalCommandMap;
 	import robotlegs.bender.framework.context.api.IContext;
 	import robotlegs.bender.framework.context.api.IContextConfig;
 		
