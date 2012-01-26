@@ -9,7 +9,7 @@ package views
 	public class AppViewMediator extends Mediator
 	{
 		[Inject]
-		public var view:iAppView;
+		public var view:IAppView;
 		
 		[Inject]
 		public var mySignal:TestSignal;

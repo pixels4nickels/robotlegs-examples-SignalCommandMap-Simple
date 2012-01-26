@@ -4,13 +4,12 @@ package cfg
 	import control.TestSignal;
 	
 	import org.swiftsuspenders.Injector;
+	
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-	
 	import robotlegs.extensions.signalCommandMap.api.ISignalCommandMap;
-	
-	import views.AppView;
+
 	import views.AppViewMediator;
-	import views.api.iAppView;
+	import views.api.IAppView;
 	
 	public class AppConfig
 	{
@@ -27,7 +26,7 @@ package cfg
 		[PostConstruct]
 		public function init():void
 		{
-			mediatorMap.mapView(AppView).toMediator(AppViewMediator).asType(iAppView);
+			mediatorMap.mapView(IAppView).toMediator(AppViewMediator);
 			commandMap.map(TestSignal).toCommand(TestCommand);
 		}
 		

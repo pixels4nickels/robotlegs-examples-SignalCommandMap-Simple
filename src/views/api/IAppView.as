@@ -2,7 +2,7 @@ package views.api
 {
 	import control.TestSignal;
 
-	public interface iAppView
+	public interface IAppView
 	{
 		function set myButtonSignal(value:TestSignal):void;
 	}
