@@ -1,8 +1,6 @@
 package control
 {
-	import robotlegs.extensions.signalCommandMap.impl.SignalCommand;
-
-	public class TestCommand extends SignalCommand
+	public class TestCommand
 	{
 		[Inject]
 		public var myString:String;
