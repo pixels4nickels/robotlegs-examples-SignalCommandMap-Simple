@@ -3,7 +3,7 @@
   <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
     <compilerSourcePath>
       <compilerSourcePathEntry kind="1" linkType="1" path="/Users/krogers/Git/robotlegs-framework/src"/>
-      <compilerSourcePathEntry kind="1" linkType="1" path="/Users/krogers/Git/SignalCommandMap/src"/>
+      <compilerSourcePathEntry kind="1" linkType="1" path="/Users/krogers/Git/robotlegs-extensions-SignalCommandMap/src"/>
     </compilerSourcePath>
     <libraryPath defaultLinkType="1">
       <libraryPathEntry kind="4" path="">

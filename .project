@@ -17,9 +17,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>[source path] SignalCommandMap-src</name>
+			<name>[source path] robotlegs-extensions-SignalCommandMap-src</name>
 			<type>2</type>
-			<location>/Users/krogers/Git/SignalCommandMap/src</location>
+			<location>/Users/krogers/Git/robotlegs-extensions-SignalCommandMap/src</location>
 		</link>
 		<link>
 			<name>[source path] robotlegs-framework-src</name>

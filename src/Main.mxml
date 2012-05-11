@@ -1,18 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
-			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" 
-			   xmlns:local="*" 
-			   xmlns:mxml="robotlegs.bender.mxml.*" 
-			   xmlns:views="views.*" 
-			   minWidth="955" minHeight="600" xmlns:cfg="cfg.*" xmlns:classic="robotlegs.bender.bundles.classic.*" 
-			   >
+<?xml version = "1.0" encoding = "utf-8"?>
+<s:Application xmlns:fx = "http://ns.adobe.com/mxml/2009"
+			   xmlns:s = "library://ns.adobe.com/flex/spark"
+			   xmlns:mxml = "robotlegs.bender.mxml.*"
+			   xmlns:cfg = "cfg.*"
+			   minWidth = "955"
+			   minHeight = "600"
+			   creationComplete = "creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.core.IVisualElement;
+			import mx.events.FlexEvent;
+
+			import views.AppView;
+
+			protected function creationCompleteHandler( event:FlexEvent ):void
+			{
+				contextTag.context.lifecycle.afterInitializing( contextInitialized );
+			}
+
+			protected function contextInitialized():void
+			{
+				addElement( new AppView());
+			}
+		]]>
+	</fx:Script>
 	<fx:Declarations>
-		<mxml:ContextBuilderTag>
-			<classic:ClassicRobotlegsBundle/>
-			<cfg:AppBundle/>
-			<cfg:AppConfig/>
+		<mxml:ContextBuilderTag id = "contextTag"
+								contextView = "{this}">
+			<cfg:AppBundle />
+			<cfg:AppConfig />
 		</mxml:ContextBuilderTag>
 	</fx:Declarations>
-	<views:AppView width="100%"/>
 </s:Application>

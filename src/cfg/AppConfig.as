@@ -1,16 +1,16 @@
-package cfg 
+package cfg
 {
 	import control.TestCommand;
 	import control.TestSignal;
-	
-	import org.swiftsuspenders.Injector;
-	
-	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-	import robotlegs.extensions.signalCommandMap.api.ISignalCommandMap;
 
-	import views.AppViewMediator;
-	import views.api.IAppView;
-	
+	import org.swiftsuspenders.Injector;
+
+	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
+
+	import views.SignalCommandTester;
+	import views.api.ISignalCommandTester;
+
 	public class AppConfig
 	{
 
@@ -24,11 +24,10 @@ package cfg
 		public var injector:Injector;
 
 		[PostConstruct]
-		public function init():void
+		public function configure():void
 		{
-			mediatorMap.mapView(IAppView).toMediator(AppViewMediator);
-			commandMap.map(TestSignal).toCommand(TestCommand);
+			mediatorMap.map( ISignalCommandTester ).toMediator( SignalCommandTester );
+			commandMap.map( TestSignal ).toCommand( TestCommand );
 		}
-		
 	}
 }

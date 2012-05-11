@@ -1,28 +1,38 @@
-package cfg 
+package cfg
 {
-	import org.swiftsuspenders.Injector;
-	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-	import robotlegs.extensions.signalCommandMap.SignalCommandMapExtension;
-	import robotlegs.extensions.signalCommandMap.api.ISignalCommandMap;
-	import robotlegs.bender.framework.context.api.IContext;
-	import robotlegs.bender.framework.context.api.IContextConfig;
-		
-	public class AppBundle implements IContextConfig
-	{
-		[Inject]
-		public var mediatorMap:IMediatorMap;
-		
-		[Inject]
-		public var commandMap:ISignalCommandMap;
-		
-		[Inject]
-		public var injector:Injector;
+	import robotlegs.bender.bundles.shared.configs.ContextViewListenerConfig;
+	import robotlegs.bender.extensions.commandMap.CommandMapExtension;
+	import robotlegs.bender.extensions.contextView.ContextViewExtension;
+	import robotlegs.bender.extensions.eventDispatcher.EventDispatcherExtension;
+	import robotlegs.bender.extensions.localEventMap.LocalEventMapExtension;
+	import robotlegs.bender.extensions.logging.LoggingExtension;
+	import robotlegs.bender.extensions.logging.TraceLoggingExtension;
+	import robotlegs.bender.extensions.mediatorMap.MediatorMapExtension;
+	import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
+	import robotlegs.bender.extensions.stageSync.StageSyncExtension;
+	import robotlegs.bender.extensions.viewManager.StageObserverExtension;
+	import robotlegs.bender.extensions.viewManager.ViewManagerExtension;
+	import robotlegs.bender.framework.api.IContext;
+	import robotlegs.bender.framework.api.IContextExtension;
 
-		public function configureContext(context:IContext):void
+	public class AppBundle implements IContextExtension
+	{
+
+		public function extend( context:IContext ):void
 		{
-			context.require(
-				SignalCommandMapExtension
-			);
+			context.extend(
+				LoggingExtension,
+				TraceLoggingExtension,
+				ContextViewExtension,
+				EventDispatcherExtension,
+				StageSyncExtension,
+				CommandMapExtension,
+				LocalEventMapExtension,
+				ViewManagerExtension,
+				StageObserverExtension,
+				MediatorMapExtension,
+				SignalCommandMapExtension );
+			context.configure( ContextViewListenerConfig );
 		}
 	}
 }
