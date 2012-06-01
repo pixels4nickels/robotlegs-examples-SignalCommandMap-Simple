@@ -1,35 +1,33 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-<s:Application xmlns:fx = "http://ns.adobe.com/mxml/2009"
-			   xmlns:s = "library://ns.adobe.com/flex/spark"
-			   xmlns:mxml = "robotlegs.bender.mxml.*"
-               xmlns:bundles = "robotlegs.bender.bundles.mvcs.*"
-			   xmlns:cfg = "config.*"
-			   minWidth = "955"
-			   minHeight = "600"
-			   creationComplete = "creationCompleteHandler(event)">
-	<fx:Script>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mxml="robotlegs.bender.mxml.*"
+               xmlns:bundles="robotlegs.bender.bundles.mvcs.*"
+               xmlns:config="config.*" xmlns:bundle="bundle.*"
+               minWidth="955"
+               minHeight="600"
+               creationComplete="creationCompleteHandler(event)">
+    <fx:Script>
 		<![CDATA[
-			import mx.core.IVisualElement;
-			import mx.events.FlexEvent;
+        import mx.core.IVisualElement;
+        import mx.events.FlexEvent;
 
-			import views.AppView;
+        import views.AppView;
 
-			protected function creationCompleteHandler( event:FlexEvent ):void
-			{
-				contextTag.context.lifecycle.afterInitializing( contextInitialized );
-			}
+        protected function creationCompleteHandler(event:FlexEvent):void {
+            contextTag.context.lifecycle.afterInitializing(contextInitialized);
+        }
 
-			protected function contextInitialized():void
-			{
-				addElement( new AppView());
-			}
-		]]>
+        protected function contextInitialized():void {
+            addElement(new AppView());
+        }
+        ]]>
 	</fx:Script>
-	<fx:Declarations>
-		<mxml:ContextBuilderTag id = "contextTag"
-								contextView = "{this}">
-			<bundles:MVCSBundle />
-			<cfg:AppConfig />
-		</mxml:ContextBuilderTag>
-	</fx:Declarations>
+    <fx:Declarations>
+        <mxml:ContextBuilderTag id="contextTag" contextView="{this}">
+            <bundles:MVCSBundle/>
+            <bundle:SignalCommandMapBundle/>
+            <config:AppConfig/>
+        </mxml:ContextBuilderTag>
+    </fx:Declarations>
 </s:Application>
