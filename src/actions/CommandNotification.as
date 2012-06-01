@@ -1,10 +1,3 @@
-/**
- * Created with IntelliJ IDEA.
- * User: kenrogers
- * Date: 6/1/12
- * Time: 12:25 PM
- * To change this template use File | Settings | File Templates.
- */
 package actions {
     public class CommandNotification {
         public function CommandNotification() {
