@@ -1,26 +1,35 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <s:Group xmlns:fx = "http://ns.adobe.com/mxml/2009"
 		 xmlns:s = "library://ns.adobe.com/flex/spark"
-		 xmlns:mx = "library://ns.adobe.com/flex/mx"
 		 width = "400"
 		 height = "300"
-		 implements = "views.api.ISignalCommandTester">
+		 implements = "behaviours.ISignalCommandTestable">
 	<s:layout>
-		<s:VerticalLayout />
+		<s:VerticalLayout  gap="5"/>
 	</s:layout>
 	<fx:Script>
 		<![CDATA[
-			import control.TestSignal;
-			import mx.events.FlexEvent;
+        import actions.CommandNotification;
+        import actions.TestSignal;
 
-			private var _myButtonSignal:TestSignal;
+        private var _myTestCommandSignal:TestSignal;
 
-			public function set myButtonSignal( value:TestSignal ):void
-			{
-				_myButtonSignal = value;
-			}
-		]]>
+        public function set myTestCommandSignal(value:TestSignal):void {
+            _myTestCommandSignal = value;
+        }
+
+        public function handleTestResult(value:CommandNotification):void {
+            output.text += "Success: " + value.success + "\n";
+            output.text += "Message: " + value.message + "\n";
+        }
+        ]]>
 	</fx:Script>
-	<s:Button label = "Dispatch Signal Command"
-			  click = "_myButtonSignal.dispatch('Some payload string.', 8)" />
+
+    <s:TextArea id="output" width="100%" height="100%"/>
+    <s:HGroup>
+        <s:Button label = "Dispatch Command Mapped Signal" click = "_myTestCommandSignal.dispatch('Some payload string.', 8, handleTestResult)" />
+        <s:Button label = "Clear Output" click = "output.text = ''" />
+    </s:HGroup>
+
+
 </s:Group>

@@ -1,6 +1,0 @@
-This is the simplest example I could come up with to test a signal triggering a command.  
-
-It uses the extension at: https://github.com/pixels4nickels/SignalCommandMap
-
-You will need to pull the latest robotlegs version 2 branch and link both your source and library path to the libs directory.  I have included the latest signals 0.9 beta swc.  The example shows dispatching a signals with 2 arguments and mapping them to the command for injection.  
-There is a still a bit of work to do and I would love to hear any inout or collaborate with the community.

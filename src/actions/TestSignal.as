@@ -1,4 +1,4 @@
-package control
+package actions
 {
 	import org.osflash.signals.Signal;
 
@@ -6,7 +6,7 @@ package control
 	{
 		public function TestSignal()
 		{
-			super(String, int);
+			super(String, int, Function);
 		}
 	}
 }

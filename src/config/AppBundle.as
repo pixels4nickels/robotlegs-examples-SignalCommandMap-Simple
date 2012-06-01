@@ -1,4 +1,4 @@
-package cfg
+package config
 {
 	import robotlegs.bender.bundles.shared.configs.ContextViewListenerConfig;
 	import robotlegs.bender.extensions.commandMap.CommandMapExtension;
@@ -13,9 +13,9 @@ package cfg
 	import robotlegs.bender.extensions.viewManager.StageObserverExtension;
 	import robotlegs.bender.extensions.viewManager.ViewManagerExtension;
 	import robotlegs.bender.framework.api.IContext;
-	import robotlegs.bender.framework.api.IContextExtension;
+    import robotlegs.bender.framework.api.IExtension;
 
-	public class AppBundle implements IContextExtension
+public class AppBundle implements IExtension
 	{
 
 		public function extend( context:IContext ):void
