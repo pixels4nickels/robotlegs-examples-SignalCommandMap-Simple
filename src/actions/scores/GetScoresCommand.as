@@ -1,6 +1,6 @@
 package actions.scores
 {
-import actions.base.CommandNotification;
+	import actions.base.CommandNotification;
 
 	public class GetScoresCommand
 	{
