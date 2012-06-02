@@ -1,9 +1,7 @@
 package behaviours.status
 {
 
-    import actions.base.CommandNotification;
-    import actions.status.GetStatusSignal;
-    import behaviours.status.IStatusDisplayable;
+    import actions.base.Notification;
     import robotlegs.bender.bundles.mvcs.Mediator;
 
     public class StatusProvider extends Mediator
@@ -11,25 +9,21 @@ package behaviours.status
         [Inject]
         public var view:IStatusDisplayable;
     
-        [Inject]
-        public var testSignal:GetStatusSignal;
-    
-        [Inject(name="GetStatusNotification")]
-        public var getStatusNotification:CommandNotification;
-    
+        [Inject(name="StatusNotification")]
+        public var getStatusNotification:Notification;
+
         public function StatusProvider()
         {
         }
     
         override public function initialize():void
         {
-            getStatusNotification.add(handleGetStatusResult);
-            view.getStatusSignal = testSignal;
+            getStatusNotification.add(handleStatusNotification);
         }
     
-        public function handleGetStatusResult(success:Boolean, message:String, data:Object):void
+        public function handleStatusNotification(success:Boolean, message:String, data:Object):void
         {
-            view.getStatusResult(success, message, data);
+            view.statusMessage = message;
         }
     }
 }

@@ -1,10 +1,7 @@
 package behaviours.scores
 {
 
-import actions.base.CommandNotification;
-import actions.scores.GetScoresSignal;
-
-import behaviours.scores.IScoreDisplayable;
+import actions.base.Notification;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -13,11 +10,8 @@ import robotlegs.bender.bundles.mvcs.Mediator;
 		[Inject]
 		public var view:IScoreDisplayable;
 
-		[Inject]
-		public var testSignal:GetScoresSignal;
-
-        [Inject(name="GetScoresNotification")]
-        public var getScoreNotification:CommandNotification;
+        [Inject(name="ScoresNotification")]
+        public var scoreNotification:Notification;
 
 		public function ScoreProvider()
 		{
@@ -25,13 +19,15 @@ import robotlegs.bender.bundles.mvcs.Mediator;
 
 		override public function initialize():void
 		{
-            getScoreNotification.add(handleGetScoresResult);
-            view.getScoresSignal = testSignal;
+            scoreNotification.add(handleScoresNotification);
 		}
 
-        public function handleGetScoresResult(success:Boolean, message:String, data:Object):void
+        public function handleScoresNotification(success:Boolean, message:String, data:Object):void
         {
-            view.getScoresResult(success, message, data);
+            if(success){
+                view.score = data.score;
+                view.highScore = data.highScore;
+            }
         }
 	}
 }

@@ -2,9 +2,9 @@ package actions.base
 {
 import org.osflash.signals.Signal;
 
-public class CommandNotification extends Signal
+public class Notification extends Signal
 	{
-		public function CommandNotification()
+		public function Notification()
 		{
 			super(Boolean, String, Object);   // success, message, data
 		}

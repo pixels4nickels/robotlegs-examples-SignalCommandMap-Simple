@@ -1,54 +1,51 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-<s:Group xmlns:fx = "http://ns.adobe.com/mxml/2009"
-		 xmlns:s = "library://ns.adobe.com/flex/spark"
-		 width = "400"
-		 height = "300"
-		 implements = "behaviours.scores.IScoreDisplayable, behaviours.status.IStatusDisplayable">
-	<s:layout>
-		<s:VerticalLayout  gap="5"/>
-	</s:layout>
-	<fx:Script>
-		<![CDATA[
-        import actions.scores.GetScoresSignal;
-        import actions.status.GetStatusSignal;
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+          xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:views="views.*"
+          width="100%"
+          height="100%"
+          implements="behaviours.init.IStartable"
+          currentState="init">
+    <fx:Script>
+        <![CDATA[
+        import actions.init.StartTrigger;
 
-        private var _getScoresSignal:GetScoresSignal;
-        private var _getStatusSignal:GetStatusSignal;
-
-        public function set getScoresSignal(value:GetScoresSignal):void {
-            _getScoresSignal = value;
-        }
-
-        public function set getStatusSignal(value:GetStatusSignal):void {
-            _getStatusSignal = value;
-        }
-
-        public function getScoresResult(success:Boolean, message:String, data:Object):void {
-            output.text += "Success: " + success + "\n";
-            output.text += "Message: " + message + "\n";
-            if (success) {
-                output.text += "high score: " + data.highScore + "\n";
-                output.text += "low score: " + data.lowScore + "\n";
-                output.text += "average score: " + data.averageScore + "\n";
-                output.text += "---------------------------\n";
-            }
-        }
-
-        public function getStatusResult(success:Boolean, message:String, data:Object):void {
-            output.text += "Success: " + success + "\n";
-            output.text += "Message: " + message + "\n";
-            output.text += "Status: " + data.status + "\n";
-            output.text += "---------------------------\n";
+        public function set initTrigger(value:StartTrigger):void {
+            startButton.addEventListener(MouseEvent.CLICK, function(){currentState = "game"; value.dispatch()})
         }
         ]]>
-	</fx:Script>
-
-    <s:TextArea id="output" width="100%" height="100%"/>
-    <s:HGroup>
-        <s:Button label = "Get Scores" click = "_getScoresSignal.dispatch()" />
-        <s:Button label = "Get Status" click = "_getStatusSignal.dispatch()" />
-        <s:Button label = "Clear Output" click = "output.text = ''" />
-    </s:HGroup>
-
+    </fx:Script>
+     <s:states>
+         <s:State name="init"/>
+         <s:State name="game" />
+     </s:states>
+    <s:Group id="startViewGroup"
+             visible.init="true"
+             visible="false"
+             horizontalCenter="0"
+             verticalCenter="0">
+        <s:Button id="startButton" label="Start" />
+    </s:Group>
+    <s:VGroup id="gameViewGroup"
+              visible.game="true"
+              visible="false"
+              gap="15"
+              height="100%"
+              width="100%"
+              horizontalAlign="center"
+              paddingBottom="10"
+              paddingTop="10"
+              paddingLeft="10"
+              paddingRight="10"
+            >
+        <views:ScoreView/>
+        <s:HGroup height="100%" verticalAlign="middle">
+            <views:Enemy enemyType="Drone"/>
+            <views:Enemy enemyType="Warship"/>
+            <views:Enemy enemyType="Shuttle"/>
+            <views:Enemy enemyType="Mothership"/>
+        </s:HGroup>
+        <views:StatusView/>
+    </s:VGroup>
 
 </s:Group>

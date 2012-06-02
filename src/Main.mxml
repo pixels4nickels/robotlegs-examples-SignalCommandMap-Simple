@@ -3,13 +3,13 @@
                xmlns:s="library://ns.adobe.com/flex/spark"
                xmlns:mxml="robotlegs.bender.mxml.*"
                xmlns:bundles="robotlegs.bender.bundles.mvcs.*"
-               xmlns:config="config.*" xmlns:bundle="bundle.*"
-               minWidth="955"
-               minHeight="600"
-               creationComplete="creationCompleteHandler(event)">
+               xmlns:config="config.*"
+               xmlns:bundle="bundle.*"
+               width="640"
+               height="480"
+               creationComplete="creationCompleteHandler(event)" >
     <fx:Script>
 		<![CDATA[
-        import mx.core.IVisualElement;
         import mx.events.FlexEvent;
 
         import views.AppView;
@@ -21,6 +21,7 @@
         protected function contextInitialized():void {
             addElement(new AppView());
         }
+
         ]]>
 	</fx:Script>
     <fx:Declarations>
