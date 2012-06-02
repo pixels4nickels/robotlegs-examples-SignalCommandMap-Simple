@@ -1,6 +1,7 @@
 package config
 {
-	import actions.TestCommand;
+import actions.TestCommandNotification;
+import actions.TestCommand;
 	import actions.TestSignal;
 
 	import org.swiftsuspenders.Injector;
@@ -26,6 +27,7 @@ package config
 		[PostConstruct]
 		public function configure():void
 		{
+            injector.map(TestCommandNotification).asSingleton();
 			mediatorMap.map( ISignalCommandTestable ).toMediator( SignalCommandTester );
 			commandMap.map( TestSignal ).toCommand( TestCommand );
 		}

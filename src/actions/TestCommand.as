@@ -1,6 +1,5 @@
 package actions
 {
-import actions.CommandNotification;
 
 public class TestCommand
 	{
@@ -11,22 +10,18 @@ public class TestCommand
 		public var myInt:int;
 
         [Inject]
-        public var myCallback:Function;
+        public var testCommandNotification:TestCommandNotification;
 		
 		public function execute():void
 		{
-            // create some test response with some fake data to return.
-            // ideally the "data" property would be a Value Object of some sort.
-            var result:CommandNotification = new CommandNotification();
-			result.success = true;
-            result.message = "Signal Command Test Complete." ;
-            result.data = {a:"A String", b:["red","yellow","blue"], c:8};
-            complete(result);
+            // imagine maybe some async operation here to get data.
+            var data:Object = {a:"Some funky stuff.", b:["red","yellow","blue"], c:8};
+            complete(true, "Signal Command Test Complete", data);
 		}
 
-        public function complete(value:CommandNotification):void
+        public function complete(success:Boolean, message:String, data:Object):void
         {
-            myCallback.apply(null,[value]);
+            testCommandNotification.dispatch(success, message, data);
         }
 	}
 }

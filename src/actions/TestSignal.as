@@ -6,7 +6,7 @@ package actions
 	{
 		public function TestSignal()
 		{
-			super(String, int, Function);
+			super(String, int);
 		}
 	}
 }

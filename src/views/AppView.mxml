@@ -9,25 +9,31 @@
 	</s:layout>
 	<fx:Script>
 		<![CDATA[
-        import actions.CommandNotification;
         import actions.TestSignal;
 
-        private var _myTestCommandSignal:TestSignal;
+        private var _testCommandSignal:TestSignal;
 
-        public function set myTestCommandSignal(value:TestSignal):void {
-            _myTestCommandSignal = value;
+        public function set testCommandSignal(value:TestSignal):void {
+            _testCommandSignal = value;
         }
 
-        public function handleTestResult(value:CommandNotification):void {
-            output.text += "Success: " + value.success + "\n";
-            output.text += "Message: " + value.message + "\n";
+        public function testCommandResult(success:Boolean, message:String, data:Object):void {
+            output.text += "Success: " + success + "\n";
+            output.text += "Message: " + message + "\n";
+            if(success)
+            {
+                output.text += "a: " + data.a + "\n";
+                output.text += "b: " + data.b + "\n";
+                output.text += "c: " + data.c + "\n";
+            }
         }
+
         ]]>
 	</fx:Script>
 
     <s:TextArea id="output" width="100%" height="100%"/>
     <s:HGroup>
-        <s:Button label = "Dispatch Command Mapped Signal" click = "_myTestCommandSignal.dispatch('Some payload string.', 8, handleTestResult)" />
+        <s:Button label = "Dispatch Command Mapped Signal" click = "_testCommandSignal.dispatch('Some payload string.', 8)" />
         <s:Button label = "Clear Output" click = "output.text = ''" />
     </s:HGroup>
 

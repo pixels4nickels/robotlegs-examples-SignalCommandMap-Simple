@@ -1,9 +1,10 @@
 package behaviours
 {
-	import actions.TestSignal;
+import actions.TestSignal;
 
 	public interface ISignalCommandTestable
 	{
-		function set myTestCommandSignal(value:TestSignal):void;
+		function set testCommandSignal(value:TestSignal):void;
+        function testCommandResult(success:Boolean, message:String, data:Object):void;
 	}
 }
