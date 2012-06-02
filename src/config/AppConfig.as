@@ -1,6 +1,6 @@
 package config
 {
-import actions.TestCommandNotification;
+import actions.base.CommandNotification;
 import actions.TestCommand;
 	import actions.TestSignal;
 
@@ -27,7 +27,7 @@ import actions.TestCommand;
 		[PostConstruct]
 		public function configure():void
 		{
-            injector.map(TestCommandNotification).asSingleton();
+            injector.map(CommandNotification).asSingleton();
 			mediatorMap.map( ISignalCommandTestable ).toMediator( SignalCommandTester );
 			commandMap.map( TestSignal ).toCommand( TestCommand );
 		}

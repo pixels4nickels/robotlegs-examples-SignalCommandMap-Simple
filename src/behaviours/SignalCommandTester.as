@@ -1,7 +1,7 @@
 package behaviours
 {
 
-import actions.TestCommandNotification;
+import actions.base.CommandNotification;
 import actions.TestSignal;
 	import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -14,7 +14,7 @@ import actions.TestSignal;
 		public var testSignal:TestSignal;
 
         [Inject]
-        public var testCommandNotification:TestCommandNotification;
+        public var testCommandNotification:CommandNotification;
 
 		public function SignalCommandTester()
 		{

@@ -1,5 +1,6 @@
 package actions
 {
+import actions.base.CommandNotification;
 
 public class TestCommand
 	{
@@ -10,7 +11,7 @@ public class TestCommand
 		public var myInt:int;
 
         [Inject]
-        public var testCommandNotification:TestCommandNotification;
+        public var testCommandNotification:CommandNotification;
 		
 		public function execute():void
 		{
