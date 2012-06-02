@@ -1,16 +1,21 @@
 package config
 {
-import actions.base.CommandNotification;
-import actions.TestCommand;
-	import actions.TestSignal;
+    import actions.base.CommandNotification;
+	import actions.*;
+import actions.scores.GetScoresCommand;
+import actions.scores.GetScoresSignal;
+import actions.status.GetStatusCommand;
+import actions.status.GetStatusSignal;
 
-	import org.swiftsuspenders.Injector;
+import behaviours.scores.IScoreDisplayable;
+import behaviours.scores.ScoreProvider;
+import behaviours.status.IStatusDisplayable;
+import behaviours.status.StatusProvider;
+
+import org.swiftsuspenders.Injector;
 
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
-
-	import behaviours.SignalCommandTester;
-	import behaviours.ISignalCommandTestable;
 
 	public class AppConfig
 	{
@@ -27,9 +32,15 @@ import actions.TestCommand;
 		[PostConstruct]
 		public function configure():void
 		{
-            injector.map(CommandNotification).asSingleton();
-			mediatorMap.map( ISignalCommandTestable ).toMediator( SignalCommandTester );
-			commandMap.map( TestSignal ).toCommand( TestCommand );
+            // scores mapping
+            injector.map(CommandNotification, "GetScoresNotification").asSingleton();
+			commandMap.map( GetScoresSignal ).toCommand( GetScoresCommand );
+            mediatorMap.map( IScoreDisplayable ).toMediator( ScoreProvider );
+
+            // status mapping
+            injector.map(CommandNotification, "GetStatusNotification").asSingleton();
+            commandMap.map( GetStatusSignal ).toCommand( GetStatusCommand );
+            mediatorMap.map( IStatusDisplayable ).toMediator( StatusProvider );
 		}
 	}
 }

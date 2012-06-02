@@ -3,37 +3,50 @@
 		 xmlns:s = "library://ns.adobe.com/flex/spark"
 		 width = "400"
 		 height = "300"
-		 implements = "behaviours.ISignalCommandTestable">
+		 implements = "behaviours.scores.IScoreDisplayable, behaviours.status.IStatusDisplayable">
 	<s:layout>
 		<s:VerticalLayout  gap="5"/>
 	</s:layout>
 	<fx:Script>
 		<![CDATA[
-        import actions.TestSignal;
+        import actions.scores.GetScoresSignal;
+        import actions.status.GetStatusSignal;
 
-        private var _testCommandSignal:TestSignal;
+        private var _getScoresSignal:GetScoresSignal;
+        private var _getStatusSignal:GetStatusSignal;
 
-        public function set testCommandSignal(value:TestSignal):void {
-            _testCommandSignal = value;
+        public function set getScoresSignal(value:GetScoresSignal):void {
+            _getScoresSignal = value;
         }
 
-        public function testCommandResult(success:Boolean, message:String, data:Object):void {
+        public function set getStatusSignal(value:GetStatusSignal):void {
+            _getStatusSignal = value;
+        }
+
+        public function getScoresResult(success:Boolean, message:String, data:Object):void {
             output.text += "Success: " + success + "\n";
             output.text += "Message: " + message + "\n";
-            if(success)
-            {
-                output.text += "a: " + data.a + "\n";
-                output.text += "b: " + data.b + "\n";
-                output.text += "c: " + data.c + "\n";
+            if (success) {
+                output.text += "high score: " + data.highScore + "\n";
+                output.text += "low score: " + data.lowScore + "\n";
+                output.text += "average score: " + data.averageScore + "\n";
+                output.text += "---------------------------\n";
             }
         }
 
+        public function getStatusResult(success:Boolean, message:String, data:Object):void {
+            output.text += "Success: " + success + "\n";
+            output.text += "Message: " + message + "\n";
+            output.text += "Status: " + data.status + "\n";
+            output.text += "---------------------------\n";
+        }
         ]]>
 	</fx:Script>
 
     <s:TextArea id="output" width="100%" height="100%"/>
     <s:HGroup>
-        <s:Button label = "Dispatch Command Mapped Signal" click = "_testCommandSignal.dispatch('Some payload string.', 8)" />
+        <s:Button label = "Get Scores" click = "_getScoresSignal.dispatch()" />
+        <s:Button label = "Get Status" click = "_getStatusSignal.dispatch()" />
         <s:Button label = "Clear Output" click = "output.text = ''" />
     </s:HGroup>
 
