@@ -13,8 +13,8 @@ import actions.TestSignal;
 		[Inject]
 		public var testSignal:TestSignal;
 
-        [Inject]
-        public var testCommandNotification:TestCommandNotification;
+        	[Inject]
+        	public var testCommandNotification:TestCommandNotification;
 
 		public function SignalCommandTester()
 		{
@@ -22,13 +22,13 @@ import actions.TestSignal;
 
 		override public function initialize():void
 		{
-            testCommandNotification.add(handleTestCommandResult);
-    		view.testCommandSignal = testSignal;
+            		testCommandNotification.add(handleTestCommandResult);
+    			view.testCommandSignal = testSignal;
 		}
 
-        public function handleTestCommandResult(success:Boolean, message:String, data:Object):void
-        {
-            view.testCommandResult(success, message, data);
-        }
+        	public function handleTestCommandResult(success:Boolean, message:String, data:Object):void
+        	{
+            		view.testCommandResult(success, message, data);
+        	}
 	}
 }
