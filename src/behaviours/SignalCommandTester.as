@@ -23,7 +23,7 @@ import actions.TestSignal;
 		override public function initialize():void
 		{
             testCommandNotification.add(handleTestCommandResult);
-    		view.testCommandSignal = testSignal;
+            view.testCommandSignal = testSignal;
 		}
 
         public function handleTestCommandResult(success:Boolean, message:String, data:Object):void
