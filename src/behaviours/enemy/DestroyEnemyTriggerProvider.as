@@ -12,10 +12,6 @@ import behaviours.scores.*;
         [Inject]
         public var enemyDestroyedSignal:EnemyDestroyedTrigger;
 
-        public function DestroyEnemyTriggerProvider()
-        {
-        }
-
         override public function initialize():void
         {
             view.enemyDestroyed = enemyDestroyedSignal;

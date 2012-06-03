@@ -1,5 +1,5 @@
 package model{
-import actions.base.Notification;
+import model.Notification;
 
 public class ScoreModel{
 
@@ -34,8 +34,8 @@ public class ScoreModel{
             modelUpdated();
         }
 
-        private function modelUpdated():void{
-            scoresNotification.dispatch(true, "", {score:score, highScore:highScore});
+        public function modelUpdated():void{
+            scoresNotification.dispatch("Scores Updated", {score:score, highScore:highScore});
         }
     }
 }

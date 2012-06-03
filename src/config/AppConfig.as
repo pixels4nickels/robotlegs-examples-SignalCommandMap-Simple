@@ -1,6 +1,6 @@
 package config
 {
-    import actions.base.Notification;
+    import model.Notification;
 
     import actions.enemy.*;
     import actions.init.*;
@@ -10,7 +10,7 @@ package config
     import behaviours.enemy.*;
     import behaviours.init.*;
 
-    import model.ScoreModel;
+    import model.*;
 
     import org.swiftsuspenders.Injector;
 
@@ -32,7 +32,9 @@ package config
 		[PostConstruct]
 		public function configure():void
 		{
+            //models
             injector.map( ScoreModel ).asSingleton();
+            injector.map( StatusModel ).asSingleton();
 
             //actions
             commandMap.map( StartTrigger ).toCommand( StartCommand );

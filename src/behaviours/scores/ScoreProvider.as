@@ -1,7 +1,7 @@
 package behaviours.scores
 {
 
-import actions.base.Notification;
+import model.Notification;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -13,21 +13,15 @@ import robotlegs.bender.bundles.mvcs.Mediator;
         [Inject(name="ScoresNotification")]
         public var scoreNotification:Notification;
 
-		public function ScoreProvider()
-		{
-		}
-
 		override public function initialize():void
 		{
             scoreNotification.add(handleScoresNotification);
 		}
 
-        public function handleScoresNotification(success:Boolean, message:String, data:Object):void
+        public function handleScoresNotification(message:String, data:Object):void
         {
-            if(success){
-                view.score = data.score;
-                view.highScore = data.highScore;
-            }
+            view.score = data.score;
+            view.highScore = data.highScore;
         }
 	}
 }

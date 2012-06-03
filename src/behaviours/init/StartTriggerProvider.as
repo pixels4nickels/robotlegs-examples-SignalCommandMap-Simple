@@ -11,10 +11,6 @@ package behaviours.init
         [Inject]
         public var initTrigger:StartTrigger;
 
-        public function StartTriggerProvider()
-        {
-        }
-
         override public function initialize():void
         {
             view.initTrigger = initTrigger;

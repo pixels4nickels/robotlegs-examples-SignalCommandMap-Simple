@@ -1,4 +1,4 @@
-package actions.base
+package model
 {
 import org.osflash.signals.Signal;
 
@@ -6,7 +6,7 @@ public class Notification extends Signal
 	{
 		public function Notification()
 		{
-			super(Boolean, String, Object);   // success, message, data
+			super(String, Object);   // message, data
 		}
 	}
 }

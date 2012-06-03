@@ -1,7 +1,7 @@
 package behaviours.status
 {
 
-    import actions.base.Notification;
+    import model.Notification;
     import robotlegs.bender.bundles.mvcs.Mediator;
 
     public class StatusProvider extends Mediator
@@ -10,18 +10,14 @@ package behaviours.status
         public var view:IStatusDisplayable;
     
         [Inject(name="StatusNotification")]
-        public var getStatusNotification:Notification;
-
-        public function StatusProvider()
-        {
-        }
+        public var statusNotification:Notification;
     
         override public function initialize():void
         {
-            getStatusNotification.add(handleStatusNotification);
+            statusNotification.add(handleStatusNotification);
         }
     
-        public function handleStatusNotification(success:Boolean, message:String, data:Object):void
+        public function handleStatusNotification(message:String, data:Object):void
         {
             view.statusMessage = message;
         }
