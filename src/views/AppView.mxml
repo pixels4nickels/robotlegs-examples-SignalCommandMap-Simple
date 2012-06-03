@@ -4,14 +4,17 @@
           xmlns:views="views.*"
           width="100%"
           height="100%"
-          implements="behaviours.init.IStartable"
+          implements="behaviours.start.IStartable"
           currentState="init">
     <fx:Script>
         <![CDATA[
-        import actions.init.StartTrigger;
+        import actions.start.StartTrigger;
 
         public function set initTrigger(value:StartTrigger):void {
-            startButton.addEventListener(MouseEvent.CLICK, function(){currentState = "game"; value.dispatch()})
+            startButton.addEventListener(MouseEvent.CLICK, function () {
+                currentState = "game";
+                value.dispatch()
+            })
         }
         ]]>
     </fx:Script>

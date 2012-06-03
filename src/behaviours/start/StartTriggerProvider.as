@@ -1,6 +1,6 @@
-package behaviours.init
+package behaviours.start
 {
-    import actions.init.StartTrigger;
+    import actions.start.StartTrigger;
     import robotlegs.bender.bundles.mvcs.Mediator;
 
     public class StartTriggerProvider extends Mediator

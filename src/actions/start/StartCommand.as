@@ -1,4 +1,4 @@
-package actions.init
+package actions.start
 {
     import model.ScoreModel;
     import model.StatusModel;

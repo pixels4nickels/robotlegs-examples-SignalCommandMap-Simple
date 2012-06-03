@@ -1,5 +1,5 @@
-package behaviours.init {
-    import actions.init.StartTrigger;
+package behaviours.start {
+    import actions.start.StartTrigger;
 
     public interface IStartable {
         function set initTrigger(value:StartTrigger):void;

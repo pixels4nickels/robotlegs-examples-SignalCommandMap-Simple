@@ -1,4 +1,4 @@
-package actions.init{
+package actions.start{
     import org.osflash.signals.Signal;
 
     public class StartTrigger extends Signal{

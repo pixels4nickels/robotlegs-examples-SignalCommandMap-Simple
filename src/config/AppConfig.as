@@ -1,14 +1,20 @@
 package config
 {
-    import model.Notification;
+import actions.start.StartCommand;
+import actions.start.StartTrigger;
+
+import behaviours.start.IStartable;
+import behaviours.start.StartTriggerProvider;
+
+import model.Notification;
 
     import actions.enemy.*;
-    import actions.init.*;
+    import actions.start.*;
 
     import behaviours.scores.*;
 	import behaviours.status.*;
     import behaviours.enemy.*;
-    import behaviours.init.*;
+    import behaviours.start.*;
 
     import model.*;
 
