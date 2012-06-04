@@ -10,8 +10,9 @@ This example uses a dynamically created mediator mapped to a view by it's implem
 
 The appConfig.as maps 1 mediator mapping and 1 signal to command mapping:
 
-   mediatorMap.map( ITriggerTestable ).toMediator( TestTriggerProvider );
-   commandMap.map( TestTrigger ).toCommand( TestCommand );
+mediatorMap.map( ITriggerTestable ).toMediator( TestTriggerProvider );
+
+commandMap.map( TestTrigger ).toCommand( TestCommand );
 
 ## View
 
