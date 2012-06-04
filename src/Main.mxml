@@ -27,7 +27,7 @@
     <fx:Declarations>
         <mxml:ContextBuilderTag id="contextTag" contextView="{this}">
             <bundles:MVCSBundle/>
-            <bundle:SignalCommandMapBundle/>
+            <config:SignalCommandMapBundle/>
             <config:AppConfig/>
         </mxml:ContextBuilderTag>
     </fx:Declarations>
