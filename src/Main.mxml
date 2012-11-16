@@ -4,10 +4,9 @@
                xmlns:mxml="robotlegs.bender.mxml.*"
                xmlns:bundles="robotlegs.bender.bundles.mvcs.*"
                xmlns:config="config.*"
-               xmlns:bundle="bundle.*"
                width="640"
                height="480"
-               creationComplete="creationCompleteHandler(event)" >
+               creationComplete="creationCompleteHandler(event)">
     <fx:Script>
 		<![CDATA[
         import mx.events.FlexEvent;
@@ -21,11 +20,10 @@
         protected function contextInitialized():void {
             addElement(new AppView());
         }
-
         ]]>
 	</fx:Script>
     <fx:Declarations>
-        <mxml:ContextBuilderTag id="contextTag" contextView="{this}">
+        <mxml:ContextBuilderTag id="contextTag">
             <bundles:MVCSBundle/>
             <config:SignalCommandMapBundle/>
             <config:AppConfig/>
