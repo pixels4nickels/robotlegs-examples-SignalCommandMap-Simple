@@ -4,18 +4,29 @@ This is an example of using the Signal Command Map. This example uses the new Ro
 
 ## Overview
 
-This example uses a dynamically created mediator mapped to a view by it's implementing interface. This allows us to provide the signal "trigger" to a view, thus allowing it to fire a command.
+This library will allow you to map a signal dispatch to the execution of a command.
 
 ## Mapping 
 
-The appConfig.as maps 1 mediator mapping and 1 signal to command mapping:
+In your app config you map a signal to a command like so:
 
-mediatorMap.map( ITriggerTestable ).toMediator( TestTriggerProvider );
 
-commandMap.map( TestTrigger ).toCommand( TestCommand );
+1. Install the extension on your context:
 
-## View
+	context.install(SignalCommandMapExtension);
 
-The example adds a view to the main stage that implements the ITriggerTestable. This causes the mediator to be created and the view injected into it (cast as ITriggerTestable). The mediator then provide the trigger to the view using a setter.
 
-When the trigger(Signal) is fired(dispatched), the command is injected with the Signal's params and executed.
+2. Inject a reference to the SignalCommandMap in your config:
+
+	[Inject]
+	public var signalCommandMap:SignalCommandMap;
+
+
+3. Use the reference to create mappings:
+
+	commandMap.map( SomeSignalClass ).toCommand( SomeCommandClass );
+
+
+When the Signal above is dispatched, the command created, injected with the Signal's params,
+and executed. You cannot use the same property types in a single signal because we do not know which one maps to
+which property in the command.  For this reason, encapsulating your signal properties is a wise and flexible choice.
