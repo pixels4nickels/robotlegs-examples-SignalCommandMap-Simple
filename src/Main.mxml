@@ -14,7 +14,7 @@
         import views.AppView;
 
         protected function creationCompleteHandler(event:FlexEvent):void {
-            contextTag.context.lifecycle.afterInitializing(contextInitialized);
+            contextTag.context.afterInitializing(contextInitialized);
         }
 
         protected function contextInitialized():void {
